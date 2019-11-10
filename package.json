@@ -14,7 +14,9 @@
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "license": "MIT",
   "homepage": "https://github.com/franciscop/use-interpolation#readme",
-  "dependencies": {},
+  "dependencies": {
+    "ola": "^1.1.0"
+  },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
