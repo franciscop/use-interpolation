@@ -6,6 +6,7 @@ A hook to interpolate values easily in React with [Ola](https://github.com/franc
 import useInterpolation from 'use-interpolation';
 
 const Counter = () => {
+  // Either initialize it with a value or with no value
   const [fps, setFps] = useInterpolation();
   useAnimationFrame(e => {
     setFps(1 / e.delta);

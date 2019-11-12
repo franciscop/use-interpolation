@@ -1,31 +1,43 @@
 // Based off a tweet and codesandbox:
 // https://mobile.twitter.com/hieuhlc/status/1164369876825169920
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Ola from "ola";
 import useAnimationFrame from "use-animation-frame";
 
+const isDefined = val => typeof val !== "undefined" && val !== null;
+
 // Reusable component that also takes dependencies
 export default (init, time) => {
-  const ref = useRef(new Ola(init, time));
+  const initValue = isDefined(init) ? new Ola(init, time) : null;
+  const ref = useRef(initValue);
 
-  const [val, setVal] = useState(init);
+  // Soft is the value being interpolated
+  const [soft, setSoft] = useState(init);
+
+  // Hard is the actual value set by the user
   const [hard, setHard] = useState(init);
 
   const setUserValue = value => {
     if (typeof value === "function") {
-      ref.current.value = value(hard);
-    } else {
+      value = value(hard);
+    }
+    if (isDefined(ref.current)) {
       ref.current.value = value;
+    } else {
+      ref.current = new Ola(value, time);
     }
     setHard(value);
   };
 
-  useAnimationFrame(() => {
-    const value = ref.current.value;
-    if (value !== val) {
-      setVal(value);
-    }
-  }, []);
+  useAnimationFrame(
+    () => {
+      if (!isDefined(ref.current)) return;
+      const value = ref.current.value;
+      if (value === soft) return;
+      setSoft(value);
+    },
+    [soft]
+  );
 
-  return [val, setUserValue, hard];
+  return [soft, setUserValue, hard];
 };
