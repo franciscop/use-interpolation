@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js latest
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+      - name: Install dependencies
+        run: npm install
+      - name: Run the linter
+        run: npm run lint
+      - name: Run the tests
+        run: npm test
+        env:
+          CI: true
