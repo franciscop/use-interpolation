@@ -1,4 +1,4 @@
-# use-interpolation
+# use-interpolation [![npm install use-interpolation](https://img.shields.io/badge/npm%20install-use--interpolation-blue.svg)](https://www.npmjs.com/package/use-interpolation) [![tests](https://github.com/franciscop/use-interpolation/workflows/tests/badge.svg)](https://github.com/franciscop/use-interpolation/actions) [![gzip size](https://img.badgesize.io/franciscop/use-interpolation/master/index.min.js.svg?label=gzip&logo=&compression=gzip)](https://github.com/franciscop/use-interpolation/blob/master/index.min.js)
 
 A hook to interpolate values easily in React with [Ola](https://github.com/franciscop/ola/):
 
