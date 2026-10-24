@@ -1,3 +1,4 @@
+// oxlint-disable-next-line typescript/triple-slash-reference
 /// <reference path="./ola.d.ts" />
 import Ola, { type OlaScalar } from "ola";
 import { useRef, useState } from "react";
